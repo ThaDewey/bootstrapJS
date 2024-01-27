@@ -1,0 +1,163 @@
+{
+	"studyTour": {
+		"locations": {
+			"oklahoma": {},
+			"london": {
+				"London Heathrow": {
+					"purpose": "transportation",
+					"type": "airport",
+					"wiki": "https://en.wikipedia.org/wiki/Heathrow_Airport",
+					"url": "https://www.heathrow.com/",
+					"youtube": "https://www.youtube.com/watch?v=ScMzIvxBSi4"
+				},
+				"Russell Square Station": {
+					"purpose": "transportation",
+					"type": "subway",
+					"wiki": "https://en.wikipedia.org/wiki/Russell_Square_tube_station",
+					"url": "https://tfl.gov.uk/tube/stop/940GZZLURSQ/russell-square-underground-station/",
+					"youtube": "https://www.youtube.com/watch?v=TIivfYgdQpU"
+				}
+			}
+		},
+		"facultyGroups": {
+			"Eliot": [
+				"Skyler Bowen",
+				"Alexandro Chacon",
+				"Ashley Jiminez",
+				"Keeley Jones",
+				"Joseline Martinez",
+				"Layne Page",
+				"Rachel Rogers",
+				"Shelby Rubino",
+				"Hailey Williams"
+			],
+			"Chapman": [
+				"Jessica Bamberg",
+				"Jennifer Bingham",
+				"Samantha Brace",
+				"Amanda Cama",
+				"Daniel Esparaza",
+				"Makenzie Goings",
+				"Caralyne Conley-Madison",
+				"Jesse Martinez",
+				"Morgan Newsumm",
+				"Katherine Ryerson",
+				"Dr Hugo DeCampos",
+				"Esmeralda Acevedo",
+				"Miyu Maeda",
+				"Estralla Zarate-Martinez"
+			],
+			"Osburn": [
+				"Christine Atkinson",
+				"Alec Barker",
+				"Steven Berklacy",
+				"Michael Barry",
+				"Molly Crosswhite",
+				"Karl Davis",
+				"Stephanie Royse",
+				"Farmer Schaeffer",
+				"Elizabeth Stewart",
+				"Meredith Wilson",
+				"Emily Ayers"
+			],
+			"Springer": [
+				"Gillian Anderson",
+				"Ananiah Pfeiffer",
+				"Landon Wasson",
+				"Risa Wilkinson",
+				"Esmeralda Acevedo",
+				"Miyu Maeda",
+				"Estrella Zarate-Martinez"
+			]
+		},
+		"faculty": {
+			"Chapman": {
+				"name": "Dr. J. David Chapman",
+				"img": "https://ui-avatars.com/api/?name=John+Doe",
+				"bio": "Dr. Chapman is an associate professor in the Finance Department and teaching real estate courses. Dr. Chapman is a licensed real estate broker in Oklahoma and owns Realty1, L LC - a real estate company with annual sales in excess of $25 million. In 2009, he successfully sold a mortgage company that had annual loans in excess of $20 Million. He also manages a multimillion-dollar real estate portfolio including office buildings, apartments, and single-family homes. He owns a development company, subURBAN Development, LLC which specializes in urban design and development projects. He is passionate about urban real estate and holds the Congress of New Urbanism Accreditation. Before his involvement in Real Estate, Dr. Chapman owned several technology companies including ExecuTain of Oklahoma Inc. and Clientele Solutions Inc. These innovative technology companies received both the “Metro50” and OVF50 awards in 1996 and 1997 with over 200 percent growth. These companies were successfully sold in June 2001. Dr. Chapman served as Chairman for Vistage International, a worldwide organization focusing on increasing the effeteness and enhancing the lives of CEOs. In his 10-year role of Chairman, he had the opportunity to coach and facilitate challenges and issues for over 60 CEOs in the Oklahoma business market. Chapman was the host of a regional television show called “Expert Talk” from 1999 to 2001. He holds a commercial pilots license, flight instructor ticket, and airframe and power plant license spending over five years on contract to the U.S. Air Force through General Dynamics Corp. training United States and foreign Air Force pilots, engineers, and maintenance personnel on the technology of the F-16 Fighter.",
+				"education": {
+					"degrees": [
+						{ "phd": "Ph.D., Oklahoma State University, 2012" },
+						{ "mba": "MBA, Embry Riddle Aeronautical University, 1991." },
+						{ "BS": "BS, Oklahoma State University, 1987" }
+					],
+					"certs": [{ "": "Master Certificate, University of Denver, 2009" }]
+				}
+			},
+			"Eliot": {
+				"name": "Dr. Jason L. Eliot",
+				"img": "https://ui-avatars.com/api/?name=John+Doe",
+				"bio": "Dr. Eliot is an assistant professor in the Management Department and teaches Ethics in both the undergraduate and the MBA Programs. He is the co-director of the 2 B Leaders Program focused on developing the next generation of business leaders. He also is the coordinator of the College’s London study abroad programs. Dr. Eliot majored in both Economics and Political Science in college while also studying History in London through the Institute of European Studies. He spent over twenty years working as an attorney and human resource professional before joining UCO in 2018.",
+				"education": {
+					"degrees": [
+						{
+							"phd": "Post Doctoral Bridge Program; University of Florida, Gainesville, FL"
+						},
+						{
+							"jd": "Juris Doctorate; Washington and Lee University School of Law, Lexington, VA"
+						},
+						{
+							"BS": "B.A., Economics and Political Science; Westminster College, Fulton, MO"
+						}
+					]
+				}
+			},
+			"McIlhatton": {
+				"name": "Dr. David McIlhatton",
+				"img": "https://ui-avatars.com/api/?name=John+Doe",
+				"bio": "Head of Protective Security and Resilience Research Dr. McIlhatton currently leads the Securing Societies Research Group at Coventry University which focuses on protecting society and the economy from the threat, risk, and harm of terrorism as well as preparing people and places for terrorist attacks. He has worked on many high-impact counter-terrorism research projects such as the UK Counter-Terrorism Strategy with a specific focus on the protection of crowded places and critical infrastructure. Dr. McIlhatton's research informed the counter-terrorism policing operation for the 2014 Commonwealth Games in Glasgow and introduced new counter-terrorism innovation for the protection of major sporting events. Indeed, his work has also informed the assessment methodologies used for understanding the vulnerabilities of crowded places, as well mitigation measures. Dr. McIlhatton has published widely on counter-terrorism and real estate in leading terrorism and real estate journals and is on numerous editorial boards of international peer-review journals and reviews for multiple terrorism journals./Dr. McIlhatton has secured significant security research funding from national, international and regional funding bodies in excess of £3 million including the European Commission funded projects: BESECURE, COBACORE, HARMONISE, INTACT and others.",
+				"schoolLink": {
+					"url": "https://www.coventry.ac.uk/research/areas-of-research/trust-peace-social-relations/ctpsr-staff/"
+				}
+			},
+			"Osburn": {
+				"name": "Dr. Holly Osburn",
+				"img": "https://ui-avatars.com/api/?name=John+Doe",
+				"bio": "Holly K. Osburn, Ph.D., is an associate professor of Management and Chair of the Management Department. She is the founder and co-direcor to the 2 B Leaders program in the College of Business and is passionate about developing the next generation of leaders. Osburn believes her mission is to show students that through learning and implementing what they learn, they can change the world and make a difference.",
+				"education": {
+					"degrees": [
+						{
+							"phd": "Ph.D. in Industrial and Organizational Psychology from the University of Oklahoma."
+						},
+						{
+							"BS": "M.S. in Industrial and Organizational Psychology from the University of Oklahoma."
+						}
+					]
+				}
+			},
+			"Range": {
+				"name": "Dan Range",
+				"img": "https://ui-avatars.com/api/?name=John+Doe",
+				"bio": "Dan graduated from the London School of Economics in 2003 and has worked at Coventry University since 2007. Here he obtained an MA in Community Cohesion Management and is currently working towards his PhD. His topic title is “The role of Institutional Trust in intergroup contact and prejudice reduction”./With a background in the social housing sector promoting community involvement, Dan has since led on major national reviews of social action and social interaction projects. Dan also worked with the Metropolitan Police and local authority partners around community tension monitoring ahead of the 2012 London Olympic and Paralympic Games. He has since co-authored 2 book chapters on the legacy of the Rio 2016 Games.",
+				"education": {
+					"degrees": [
+						{
+							"BS": "Community Cohesion Management, Coventry University"
+						},
+						{
+							"BS": "London School of Economics, 2003"
+						}
+					]
+				}
+			},
+			"Springer": {
+				"name": "Dr. Michael Springer",
+				"img": "https://ui-avatars.com/api/?name=John+Doe",
+				"bio": "Michael Springer, Ph.D., is a professor of history in the Department of History & Geography at UCO. His research and teaching interests focus on the refugee communities in sixteenth century Europe, and more generally, on early modern European history. He has a special interest in the refugee communities in sixteenth-century London, which led to his first book on John a Lasco and the Forma ac ratio. His research on this topic led him to join the Dutch Church Book Provenance Project, a collaboration between the Dutch Church in London, Lambeth Palace Library, and the British Library. He takes students each summer to London to work on this project, which is researching the historical library of the Dutch Church. Any students wanting to take part in the project or know more about it should email him for more information. In addition to his work in the department, Springer also serves as the faculty director for the Office of High-Impact Practices, where he promotes undergraduate research programs at UCO. He always is interested in speaking with students looking to get involved with undergraduate research experiences. He also serves as co-executive editor for 1890: A Journal of Undergraduate Research, is an editor for H-German, and is an elected councilor to the Undergraduate Research Program Division of the Council of Undergraduate Research.",
+				"education": {
+					"degrees": [
+						{
+							"phd": "Ph.D., History, 2005, University of St. Andrews, Scotland. Dissertation: “Church Building and the Formaac ratio: The influence of John a Lasco's Ordinance in Sixteenth-Century Europe.”"
+						},
+						{
+							"jd": "M.A., History, 2000, Portland State University, Oregon. Thesis: “The English Exile Congregation in Emden:The Marian Exile Presses and English Protestant Culture.”"
+						},
+						{
+							"BS": "B.A., Telecommunications and Film, 1991, Minor in History, University of Oregon"
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+<body>
+    <div class="container">
+        <div id="fred" class="row"></div>
+    </div>
+
+
+    <script type="module">
+        import * as card from "./js/bs5_card.js";
+
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Process and display the data
+                const fred = document.getElementById('fred');
+                //container.innerHTML = JSON.stringify(data, null, 2);
+                let json = data;
+                let faculty = json.studyTour.faculty;
+                for (let key in faculty) {
+
+                    let member = faculty[key];
+                    card.DisplayCard({
+                        container: {
+                            tag: "div",
+                            parent: fred,
+                            classes: "col-4",
+                            id: key
+                        },
+                        card: {
+                            tag: "div",
+                            classes: "card",
+                        },
+                        header: {
+                            imgCap: {
+                                attributes: {
+                                    src: member.img,
+                                    alt: "..."
+                                },
+                            }
+                        },
+                        body: {
+                            title: {
+                                tag: "h1",
+                                innerHTML: member.name
+                            },
+                            cardText: {
+                                innerHTML: member.bio
+                            }
+                        }
+                    });
+                }
+
+
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
