@@ -11,9 +11,9 @@
         <div id="fred" class="row"></div>
     </div>
 
-
     <script type="module">
-        import * as card from "./js/bs5_card.js";
+        // import * as bs from "./js/bootstrap.js";
+        import * as bs from './js/bootstrap.js';
 
         fetch('data.json')
             .then(response => response.json())
@@ -26,7 +26,7 @@
                 for (let key in faculty) {
 
                     let member = faculty[key];
-                    card.DisplayCard({
+                    bs.DisplayCard({
                         container: {
                             tag: "div",
                             parent: fred,
