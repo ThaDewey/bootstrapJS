@@ -1,19 +1,54 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
 <body>
-    <div class="container">
-        <div id="fred" class="row"></div>
-    </div>
+    <main class="container">
+        <section class="row Faculty-details" id="thing">
+
+            <p class="courses">12 Courses</p>
+            <p class="rating">867 Rating</p>
+            <p class="students">4k Students</p>
+            <p class="bio">One advanced diverted domestic sex repeated bringing you old...</p>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <p>📞 +123 456 7890</p>
+                <p>📧 mail@info.com</p>
+                <p>🌐 Edukat.edu</p>
+            </div>
+
+            <!-- Qualifications -->
+            <div class="qualifications">
+                <h3>Qualifications</h3>
+                <p>BSC in CSE</p>
+                <p>Doctor of Philosophy</p>
+            </div>
+
+            <!-- Experience -->
+            <div class="experience">
+                <h3>Experience</h3>
+                <p>Mastering PHP</p>
+                <p>Senior WordPress Developer</p>
+            </div>
+
+
+    </main>
+
 
     <script type="module">
         // import * as bs from "./js/bootstrap.js";
         import * as bs from './js/bootstrap.js';
+        // let profileImg = document.getElementById("profileImg");
+        let cont = document.getElementById("thing");
+
 
         fetch('data.json')
             .then(response => response.json())
@@ -23,9 +58,116 @@
                 //container.innerHTML = JSON.stringify(data, null, 2);
                 let json = data;
                 let faculty = json.studyTour.faculty;
+
+
+
+
+
+
+
                 for (let key in faculty) {
 
+
+
+
                     let member = faculty[key];
+                    console.log(member);
+
+                    let row = bs.CreateElement({
+                        tag: "section",
+                        parent: cont,
+                        classes: "row",
+                    });
+
+                    let imgHolder = bs.CreateElement({
+                        tag: "div",
+                        parent: row,
+                        classes: "col-2",
+                    });
+
+                    let profileImg = bs.CreateElement({
+                        tag: "img",
+                        parent: imgHolder,
+                        classes: "img-fluid",
+                        attributes: {
+                            src: member.img,
+                            alt: "..."
+                        },
+                        id: key
+                    });
+
+                    let right = bs.CreateElement({
+                        tag: "div",
+                        parent: row,
+                        classes: "col-10",
+                    });
+
+                    let header1 = bs.CreateElement({
+                        tag: "h1",
+                        parent: right,
+                        innerHTML: member.name
+                    });
+
+                    let header2 = bs.CreateElement({
+                        tag: "h2",
+                        parent: right,
+                        innerHTML: "Job Title"
+                    });
+
+                    let bio = bs.CreateElement({
+                        tag: "div",
+                        parent: right,
+                        innerHTML: member.bio
+                    });
+
+                    let credentials = bs.CreateElement({
+                        tag: "div",
+                        parent: right,
+                        class: "row",
+                        id: "credentials"
+                    });
+
+                    let Qualifications = bs.CreateElement({
+                        tag: "div",
+                        parent: credentials,
+                        class: "col-6",
+                        id: "Qualifications"
+                    });
+
+                    
+                    let h_Qualifcations = bs.CreateElement({
+                        tag: "h4",
+                        parent: Qualifications,
+                        innerHTML:"Notes"
+                    });
+
+                    let Education = bs.CreateElement({
+                        tag: "div",
+                        parent: credentials,
+                        class: "col-6",
+                        id: "Education"
+                    });
+
+                    let h_education = bs.CreateElement({
+                        tag: "h4",
+                        parent: Education,
+                        innerHTML:"Education"
+                    });
+
+                    if (member.education) {
+                        console.log("Fire");
+                        for (let degreeIndex in member.education.degrees) {
+                            for (let toast in member.education.degrees[degreeIndex]) {
+                                bs.CreateElement({
+                                    tag: "div",
+                                    parent: Education,
+                                    innerHTML: toast + member.education.degrees[degreeIndex][toast]
+                                });
+                            }
+                        }
+                    }
+
+
                     bs.DisplayCard({
                         container: {
                             tag: "div",
@@ -61,6 +203,9 @@
             })
             .catch(error => console.error('Error:', error));
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
