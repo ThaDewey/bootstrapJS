@@ -60,24 +60,25 @@ export function DisplayCard(bsCardOptions) {
  */
 function buildBootstrapCard(card) {
     var _a, _b;
-    const container = build.CreateElement(card.container);
-    if (card.card) {
-        card.card.parent = container;
-    }
-    const bsCard = build.CreateElement(card.card);
+    let container = build.CreateDiv(card.container);
+    card["card"] = {
+        parent: container,
+        classes: "card",
+    };
+    let bsCard = build.CreateDiv(card.card);
     if ((_a = card.header) === null || _a === void 0 ? void 0 : _a.imgCap) {
         card.header.imgCap.classes = "card-img-top";
+        card.header.imgCap.parent = bsCard;
         build.CreateImg((_b = card.header) === null || _b === void 0 ? void 0 : _b.imgCap);
     }
-    const cardBody = build.CreateElement({
-        tag: "div",
+    const cardBody = build.CreateDiv({
         parent: bsCard,
         classes: "card-body",
     });
     if (card.body.title) {
-        (card.body.title.classes = "card-title"),
-            (card.body.title.parent = cardBody);
-        build.CreateElement(card.body.title);
+        card.body.title.classes = "card-title",
+            card.body.title.parent = cardBody;
+        build.CreateH5(card.body.title);
     }
     if (card.body.cardText) {
         card.body.cardText.parent = cardBody;
@@ -87,11 +88,11 @@ function buildBootstrapCard(card) {
         if (!card.body.cardText.classes) {
             card.body.cardText.classes = "card-text";
         }
-        build.CreateElement(card.body.cardText);
+        build.CreateDiv(card.body.cardText);
     }
     if (card.body.readMore) {
         card.body.readMore.parent = cardBody;
-        const button = build.CreateElement(card.body.readMore);
+        const button = build.CreateA(card.body.readMore);
     }
-    return bsCard;
+    return container;
 }

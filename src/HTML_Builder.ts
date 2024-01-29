@@ -17,12 +17,17 @@ export interface HTMLOptions {
  * @returns {HTMLElement}
  */
 export function CreateElement(options: HTMLOptions): HTMLElement {
+
+	console.log("CreateElement");
+	console.log(options);
 	let element = document.createElement(options.tag!);
 
 	if (options.id) element.id = options.id;
 	if (options.classes) AddClassToElement(element, options.classes);
 	if (options.attributes) AddAttributes(element, options.attributes);
-	if (options.parent) options.parent.appendChild(element);
+	if (options.parent) 
+	{console.log("Now appending child");
+		options.parent.append(element);}
 	if (options.innerHTML) element.innerHTML = options.innerHTML;
 	return element;
 }
@@ -66,6 +71,10 @@ export function CreateSection(htmlOptions:HTMLOptions):HTMLElement{
 }
 export function CreateDiv(htmlOptions:HTMLOptions):HTMLElement{
 	htmlOptions.tag = "div";	
+	return CreateElement(htmlOptions);
+}
+export function CreateA(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "a";	
 	return CreateElement(htmlOptions);
 }
 

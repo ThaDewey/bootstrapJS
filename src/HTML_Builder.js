@@ -4,6 +4,8 @@
  * @returns {HTMLElement}
  */
 export function CreateElement(options) {
+    console.log("CreateElement");
+    console.log(options);
     let element = document.createElement(options.tag);
     if (options.id)
         element.id = options.id;
@@ -11,8 +13,10 @@ export function CreateElement(options) {
         AddClassToElement(element, options.classes);
     if (options.attributes)
         AddAttributes(element, options.attributes);
-    if (options.parent)
-        options.parent.appendChild(element);
+    if (options.parent) {
+        console.log("Now appending child");
+        options.parent.append(element);
+    }
     if (options.innerHTML)
         element.innerHTML = options.innerHTML;
     return element;
@@ -52,6 +56,10 @@ export function CreateSection(htmlOptions) {
 }
 export function CreateDiv(htmlOptions) {
     htmlOptions.tag = "div";
+    return CreateElement(htmlOptions);
+}
+export function CreateA(htmlOptions) {
+    htmlOptions.tag = "a";
     return CreateElement(htmlOptions);
 }
 export function CreateH1(htmlOptions) {
