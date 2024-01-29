@@ -11,17 +11,36 @@ enum ListType {
 export interface List {
 	listType: ListType;
 	container: ContainerType;
-	listItems: Array<any | List | Record<string, any>>;
+	listItems: ArrayOfDisplays;
 }
 
-let exampleList: List = {
+export interface DisplayList {
+	[key: string]: string;
+}
+
+export const exampleList: List = {
+	listType: ListType.unordered,
+	container: ContainerType.unstyled,
+	listItems: [
+		{ fire: "Sale" },
+		{ col: "hot" },
+		{ winter: "summer" },
+		{ spring: "fall" },
+		{ math: "1" },
+	],
+};
+
+export interface ArrayOfDisplays extends Array<DisplayList> {}
+
+/* export let exampleList: List = {
 	listType: ListType.ordered,
 	container: ContainerType.unstyled,
 	listItems: [
-		"A string",
-		42,
-		{ key1: "value1", key2: 3 }, // Object as Record
 		[1, 2, 3], // Array
+		"A string",
+		{ fire: "Sale" },
+		{ key1: "value1", key2: 3 }, // Object as Record
+		42,
 		{
 			// Nested list
 			listType: ListType.unordered,
@@ -29,38 +48,80 @@ let exampleList: List = {
 			listItems: ["Nested item 1", "Nested item 2"],
 		},
 	],
-};
+}; */
 
+function determineType(
+	listItems: Array<any | List | Record<string, any>>
+): string {
+	console.log("determineType");
+	console.log(listItems);
 
-export function buildListFromJSON(jsonData: any): List {
-    let listItems: Array<any | List | Record<string, any>> = [];
+	for (let item in listItems) {
+		console.log("----- item --- ");
+		console.log(listItems[item]);
 
-    for (const key in jsonData) {
-        if (jsonData.hasOwnProperty(key)) {
-            const value = jsonData[key];
+		// Assuming 'List' objects have a unique property 'listType'
+		if (
+			typeof listItems[item] === "object" &&
+			listItems[item] !== null &&
+			"listType" in listItems[item]
+		) {
+			console.log("List object");
+			return "List";
+		}
+	}
+	return "";
 
-            if (typeof value === 'object' && !Array.isArray(value)) {
-                // If the value is an object, recursively build a nested list
-                listItems.push({
-                    listType: ListType.unordered,
-                    container: ContainerType.styled,
-                    listItems: buildListFromJSON(value).listItems
-                });
-            } else {
-                // Otherwise, add the value directly
-                listItems.push(`${key}: ${value}`);
-            }
-        }
-    }
+	/* 	if (typeof listItem === "object") {
+		console.log("is primitive");
+		return"";
+	} else {
+		console.log("NOT is primitive");
+	}
 
-    return {
-        listType: ListType.unordered,
-        container: ContainerType.unstyled,
-        listItems: listItems
-    };
+	if (checkIsPrimitive(listItem)) {
+		console.log("is primitive");
+		return"";
+	} else {
+		console.log("NOT is primitive");
+	} */
+
+	/* 	// Check if value is an array
+	if (Array.isArray(listItem)) {
+		console.log("isArray");
+
+		// Check if it's an array of primitives
+		if (listItem.every((item) => item !== Object(item))) {
+			console.log("array of primitives");
+		}
+		// Check if the array contains List objects (adjust based on unique List property)
+		else {
+			console.log("array");
+		}
+	}
+
+	// Check if value is a plain JSON object
+	if (typeof listItems === "object" && listItems !== null) {
+		console.log("JSON object");
+	} */
+
+	console.log("END determineType");
 }
 
- 
+function whatKindOfObject(item: Array<any | List | Record<string, any>>) {
+	let isArray = Array.isArray(item);
+
+	if (isArray) return Array;
+
+	//console.log(itemType);
+}
+
+export function buildListFromJSON(jsonData: any): List {
+	//let fire: List = exampleList;
+
+	return exampleList;
+}
+
 export function createExampleList() {
 	const body = document.getElementsByTagName("body");
 	const div = document.createElement("div");
@@ -70,63 +131,89 @@ export function createExampleList() {
 	div.appendChild(list);
 }
 
-function buildListItemForPrimitive(item: any): HTMLElement {
-    let listItemOptions: build.HTMLOptions = { tag: "li" };
-    let listItem = build.CreateLI(listItemOptions);
-    listItem.textContent = item.toString();
-    return listItem;
+const iconMapping: { [key: string]: string[] | string } = {
+	email: ["fa", "fa-envelope"], // Example for font icon classes
+	phone: ["fa", "fa-phone-square"],
+	"work-phone": ["fa", "fa-phone-square"],
+	phd: ["fa", "fa-graduation-cap"],
+	jd: ["fa", "fa-graduation-cap"],
+	bs: ["fa", "fa-graduation-cap"],
+	// ... other mappings
+};
+
+function buildListItemForObject(
+	item: any,
+	includeKeys: boolean = false,
+	includeIcons: boolean = false
+): HTMLElement {
+	console.log("buildlistitem for object");
+	let listItemOptions: build.HTMLOptions = { tag: "li" };
+	let listItem = build.CreateLI(listItemOptions);
+	console.log(item);
+
+	/*
+	const processItem = (key: string, value: any) => {
+		let innerListItemOptions: build.HTMLOptions = { tag: "li" };
+		let innerListItem = build.CreateLI(innerListItemOptions);
+
+
+
+		let textContent = includeKeys ? `${key}: ${value}` : `${value}`;
+		let textNode = document.createTextNode(textContent);
+		innerListItem.appendChild(textNode);
+
+		return innerListItem;
+	};
+*/
+
+	/*
+	if ("listType" in item && "container" in item && "listItems" in item) {
+		// Handle nested lists
+		listItem.appendChild(BuildList(item));
+	} else if (typeof item === "object" && item !== null) {
+		// Handle simple objects
+		let innerListOptions: build.HTMLOptions = { tag: "ul" };
+		let innerList = build.CreateUL(innerListOptions);
+
+		for (const key in item) {
+			if (item.hasOwnProperty(key)) {
+				innerList.appendChild(processItem(key, item[key]));
+			}
+		}
+		listItem.appendChild(innerList);
+	} else {
+		// Handle non-object items (e.g., strings, numbers)
+		listItem.textContent = item.toString();
+	}
+*/
+	return listItem;
 }
 
-function buildListItemsForArray(array: any[]): HTMLElement[] {
-    return array.map(element => {
-        return buildListItemForPrimitive(element);
-    });
-}
+export function BuildList(
+	list: List,
+	includeKeys: boolean = false,
+	includeIcons: boolean = false
+): HTMLElement {
+	console.log("BuildList");
+	let listElementOptions: build.HTMLOptions = {
+		classes: list.container,
+	};
 
-function buildListItemForObject(item: any, includeKeys: boolean = false): HTMLElement {
-    let listItemOptions: build.HTMLOptions = { tag: "li" };
-    let listItem = build.CreateLI(listItemOptions);
-    let innerListOptions: build.HTMLOptions = { tag: "ul" };
-    let innerList = build.CreateUL(innerListOptions);
+	let listElement =
+		list.listType === ListType.ordered
+			? build.CreateOL(listElementOptions)
+			: build.CreateUL(listElementOptions);
 
-    if ('listType' in item && 'container' in item && 'listItems' in item) {
-        listItem.appendChild(BuildList(item));
-    } else {
-        for (const key in item) {
-            if (item.hasOwnProperty(key)) {
-                let innerListItemOptions: build.HTMLOptions = { tag: "li" };
-                let innerListItem = build.CreateLI(innerListItemOptions);
-                innerListItem.textContent = includeKeys ? `${key}: ${item[key]}` : `${item[key]}`;
-                innerList.appendChild(innerListItem);
-            }
-        }
-        listItem.appendChild(innerList);
-    }
+	list.listItems.forEach((item) => {
+		//let lit = buildListItemForObject(item);
+		let listItemOptions: build.HTMLOptions = {
+			parent: listElement,
+			tag: "li",
+			innerHTML: item[0],
+		};
+		let lit = build.CreateLI(listItemOptions);
+		// listElement.append(lit);
+	});
 
-    return listItem;
-}
-
-export function BuildList(list: List, includeKeys: boolean = false): HTMLElement {
-    let listElementOptions: build.HTMLOptions = {
-        classes: list.container
-    };
-
-    let listElement = list.listType === ListType.ordered 
-                      ? build.CreateOL(listElementOptions) 
-                      : build.CreateUL(listElementOptions);
-
-    list.listItems.forEach(item => {
-        if (Array.isArray(item)) {
-            buildListItemsForArray(item).forEach(listItem => {
-                listElement.appendChild(listItem);
-            });
-        } else if (typeof item === "string" || typeof item === "number" || typeof item === "boolean") {
-            listElement.appendChild(buildListItemForPrimitive(item));
-        } else if (item && typeof item === "object") {
-            // Pass includeKeys parameter to buildListItemForObject
-            listElement.appendChild(buildListItemForObject(item, includeKeys));
-        }
-    });
-
-    return listElement;
+	return listElement;
 }

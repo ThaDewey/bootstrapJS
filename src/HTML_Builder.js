@@ -4,8 +4,8 @@
  * @returns {HTMLElement}
  */
 export function CreateElement(options) {
-    console.log("CreateElement");
-    console.log(options);
+    //console.log("CreateElement");
+    //console.log(options);
     let element = document.createElement(options.tag);
     if (options.id)
         element.id = options.id;
@@ -13,10 +13,8 @@ export function CreateElement(options) {
         AddClassToElement(element, options.classes);
     if (options.attributes)
         AddAttributes(element, options.attributes);
-    if (options.parent) {
-        console.log("Now appending child");
+    if (options.parent)
         options.parent.append(element);
-    }
     if (options.innerHTML)
         element.innerHTML = options.innerHTML;
     return element;
@@ -26,7 +24,7 @@ export function AddClassToElement(element, classesToAdd) {
         return;
     if (Array.isArray(classesToAdd)) {
         // If classesToAdd is an array, add each class individually
-        classesToAdd.forEach(cls => element.classList.add(cls));
+        classesToAdd.forEach((cls) => element.classList.add(cls));
     }
     else {
         // If classesToAdd is a string, add it directly
