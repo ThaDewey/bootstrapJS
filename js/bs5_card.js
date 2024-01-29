@@ -1,14 +1,11 @@
 import * as build from "./HTML_Builder.js";
-var HandleParent;
-(function (HandleParent) {
-    HandleParent[HandleParent["append"] = 0] = "append";
-    HandleParent[HandleParent["override"] = 1] = "override";
-})(HandleParent || (HandleParent = {}));
-function test() {
-    const container = document.getElementById("data-container");
+export function example() {
+    const body = document.getElementsByTagName("body");
+    const div = document.createElement("div");
+    body[0].appendChild(div);
     DisplayCard({
         card: {
-            parent: container,
+            parent: div,
         },
         body: { cardText: { innerHTML: "fire" } },
     });
@@ -70,7 +67,7 @@ function buildBootstrapCard(card) {
     const bsCard = build.CreateElement(card.card);
     if ((_a = card.header) === null || _a === void 0 ? void 0 : _a.imgCap) {
         card.header.imgCap.classes = "card-img-top";
-        build.CreateImg(bsCard, (_b = card.header) === null || _b === void 0 ? void 0 : _b.imgCap);
+        build.CreateImg((_b = card.header) === null || _b === void 0 ? void 0 : _b.imgCap);
     }
     const cardBody = build.CreateElement({
         tag: "div",

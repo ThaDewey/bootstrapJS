@@ -1,13 +1,5 @@
 import * as build from "./HTML_Builder.js";
 
-interface Attribute {
-	[key: string]: string;
-}
-
-enum HandleParent {
-	append,
-	override,
-}
 
 interface BS_Card {
 	container?: build.HTMLOptions;
@@ -26,11 +18,14 @@ interface BS_Card {
 	};
 }
 
-function test() {
-	const container = document.getElementById("data-container");
+export function example() {
+	const body = document.getElementsByTagName("body");
+	const div = document.createElement("div");
+body[0].appendChild(div);
+		
 	DisplayCard({
 		card: {
-			parent: container!,
+			parent: div!,
 		},
 		body: { cardText: { innerHTML: "fire" } },
 	});
@@ -97,7 +92,7 @@ function buildBootstrapCard(card: BS_Card): HTMLElement {
 
 	if (card.header?.imgCap) {
 		card.header.imgCap.classes = "card-img-top";
-		build.CreateImg(bsCard, card.header?.imgCap);
+		build.CreateImg(card.header?.imgCap);
 	}
 	const cardBody = build.CreateElement({
 		tag: "div",

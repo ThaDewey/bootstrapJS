@@ -22,7 +22,7 @@ export function CreateElement(options: HTMLOptions): HTMLElement {
 	if (options.id) element.id = options.id;
 	if (options.classes) AddClassToElement(element, options.classes);
 	if (options.attributes) AddAttributes(element, options.attributes);
-	if (options.parent) options.parent.append(element);
+	if (options.parent) options.parent.appendChild(element);
 	if (options.innerHTML) element.innerHTML = options.innerHTML;
 	return element;
 }
@@ -52,13 +52,57 @@ export function AddAttributes(
 		}
 	}
 }
-export function CreateImg(
-	parent: HTMLElement,
-	imgCap: HTMLOptions
-): HTMLElement {
-	if (parent) {
-		imgCap.parent = parent;
-		imgCap.tag = "img";
+
+export function CreateImg(imgCap: HTMLOptions): HTMLElement {
+	imgCap.tag = "img";
+	if (imgCap.parent) {
+		imgCap.parent = imgCap.parent;
 	}
 	return CreateElement(imgCap);
+}
+export function CreateSection(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "section";	
+	return CreateElement(htmlOptions);
+}
+export function CreateDiv(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "div";	
+	return CreateElement(htmlOptions);
+}
+
+export function CreateH1(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "h1";	
+	return CreateElement(htmlOptions);
+}
+export function CreateH2(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "h2";	
+	return CreateElement(htmlOptions);
+}
+export function CreateH3(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "h3";	
+	return CreateElement(htmlOptions);
+}
+export function CreateH4(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "h4";	
+	return CreateElement(htmlOptions);
+}
+export function CreateH5(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "h5";	
+	return CreateElement(htmlOptions);
+}
+export function CreateH6(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "h6";	
+	return CreateElement(htmlOptions);
+}
+
+export function CreateOL(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "ol";	
+	return CreateElement(htmlOptions);
+}
+export function CreateUL(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "ul";	
+	return CreateElement(htmlOptions);
+}
+export function CreateLI(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "li";	
+	return CreateElement(htmlOptions);
 }
