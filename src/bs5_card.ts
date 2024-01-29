@@ -1,7 +1,7 @@
 import * as build from "./HTML_Builder.js";
 
 
-interface BS_Card {
+export interface BS_Card {
 	container?: build.HTMLOptions;
 	card?: build.HTMLOptions;
 	header?: {
@@ -74,8 +74,8 @@ function CreateCardData(overrides?: Partial<BS_Card>): BS_Card {
 	return { ...bsCardOptions, ...overrides };
 }
 
-export function DisplayCard(bsCardOptions: BS_Card) {
-	let bsCard = buildBootstrapCard(bsCardOptions);
+export function DisplayCard(bsCardOptions: BS_Card):HTMLElement {
+	return buildBootstrapCard(bsCardOptions);
 }
 /**
  * Builds the basic bootstrap Card
