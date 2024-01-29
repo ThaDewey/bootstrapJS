@@ -62,6 +62,10 @@ export function CreateA(htmlOptions) {
     htmlOptions.tag = "a";
     return CreateElement(htmlOptions);
 }
+export function CreateP(htmlOptions) {
+    htmlOptions.tag = "p";
+    return CreateElement(htmlOptions);
+}
 export function CreateH1(htmlOptions) {
     htmlOptions.tag = "h1";
     return CreateElement(htmlOptions);

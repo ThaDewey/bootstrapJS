@@ -77,6 +77,10 @@ export function CreateA(htmlOptions:HTMLOptions):HTMLElement{
 	htmlOptions.tag = "a";	
 	return CreateElement(htmlOptions);
 }
+export function CreateP(htmlOptions:HTMLOptions):HTMLElement{
+	htmlOptions.tag = "p";	
+	return CreateElement(htmlOptions);
+}
 
 export function CreateH1(htmlOptions:HTMLOptions):HTMLElement{
 	htmlOptions.tag = "h1";	
