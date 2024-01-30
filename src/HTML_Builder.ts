@@ -69,6 +69,10 @@ export function CreateSection(htmlOptions: HTMLOptions): HTMLElement {
 	htmlOptions.tag = "section";
 	return CreateElement(htmlOptions);
 }
+export function CreateI(htmlOptions: HTMLOptions): HTMLElement {
+	htmlOptions.tag = "i";
+	return CreateElement(htmlOptions);
+}
 export function CreateDiv(htmlOptions: HTMLOptions): HTMLElement {
 	htmlOptions.tag = "div";
 	return CreateElement(htmlOptions);

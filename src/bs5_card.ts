@@ -124,3 +124,46 @@ function buildBootstrapCard(card: BS_Card): HTMLElement {
 
 	return container;
 }
+
+
+// function bsCardData(member: any): bs.BS_Card {
+// 	let cardData: bs.BS_Card = {
+// 		container: {
+// 			tag: "div",
+// 			classes: "col-md-4",
+// 			parent: document.getElementById("fred")!
+// 		},
+// 		card: {
+// 			tag: "div",
+// 			classes: "card",
+// 		},
+// 		header: member.img
+// 			? {
+// 					imgCap: {
+// 						tag: "img",
+// 						classes: "card-img-top",
+// 						attributes: {
+// 							src: member.img,
+// 							alt: member.name || "Card image",
+// 						},
+// 					},
+// 			  }
+// 			: undefined,
+// 		body: {
+// 			title: {
+// 				tag: "h5",
+// 				classes: "card-title",
+// 				innerHTML: member.name || "Default Name",
+// 			},
+// 			cardText: {
+// 				tag: "p",
+// 				classes: "card-text",
+// 				innerHTML: member.bio || "Default bio text.",
+// 			},
+// 			// Include readMore or other properties if relevant
+// 		},
+// 		// Include footer if relevant
+// 	};
+
+// 	return cardData;
+// }

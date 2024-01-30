@@ -1,10 +1,10 @@
 import * as build from "./HTML_Builder.js";
 
-enum ContainerType {
+export enum ContainerType {
 	unstyled = "list-unstyled",
 	styled = "",
 }
-enum ListType {
+export enum ListType {
 	ordered,
 	unordered,
 }
@@ -32,90 +32,6 @@ export const exampleList: List = {
 
 export interface ArrayOfDisplays extends Array<DisplayList> {}
 
-/* export let exampleList: List = {
-	listType: ListType.ordered,
-	container: ContainerType.unstyled,
-	listItems: [
-		[1, 2, 3], // Array
-		"A string",
-		{ fire: "Sale" },
-		{ key1: "value1", key2: 3 }, // Object as Record
-		42,
-		{
-			// Nested list
-			listType: ListType.unordered,
-			container: ContainerType.styled,
-			listItems: ["Nested item 1", "Nested item 2"],
-		},
-	],
-}; */
-
-function determineType(
-	listItems: Array<any | List | Record<string, any>>
-): string {
-	console.log("determineType");
-	console.log(listItems);
-
-	for (let item in listItems) {
-		console.log("----- item --- ");
-		console.log(listItems[item]);
-
-		// Assuming 'List' objects have a unique property 'listType'
-		if (
-			typeof listItems[item] === "object" &&
-			listItems[item] !== null &&
-			"listType" in listItems[item]
-		) {
-			console.log("List object");
-			return "List";
-		}
-	}
-	return "";
-
-	/* 	if (typeof listItem === "object") {
-		console.log("is primitive");
-		return"";
-	} else {
-		console.log("NOT is primitive");
-	}
-
-	if (checkIsPrimitive(listItem)) {
-		console.log("is primitive");
-		return"";
-	} else {
-		console.log("NOT is primitive");
-	} */
-
-	/* 	// Check if value is an array
-	if (Array.isArray(listItem)) {
-		console.log("isArray");
-
-		// Check if it's an array of primitives
-		if (listItem.every((item) => item !== Object(item))) {
-			console.log("array of primitives");
-		}
-		// Check if the array contains List objects (adjust based on unique List property)
-		else {
-			console.log("array");
-		}
-	}
-
-	// Check if value is a plain JSON object
-	if (typeof listItems === "object" && listItems !== null) {
-		console.log("JSON object");
-	} */
-
-	console.log("END determineType");
-}
-
-function whatKindOfObject(item: Array<any | List | Record<string, any>>) {
-	let isArray = Array.isArray(item);
-
-	if (isArray) return Array;
-
-	//console.log(itemType);
-}
-
 export function buildListFromJSON(jsonData: any): List {
 	//let fire: List = exampleList;
 
@@ -133,69 +49,29 @@ export function createExampleList() {
 
 const iconMapping: { [key: string]: string[] | string } = {
 	email: ["fa", "fa-envelope"], // Example for font icon classes
-	phone: ["fa", "fa-phone-square"],
-	"work-phone": ["fa", "fa-phone-square"],
+	phone: ["bi", "bi-telephone-fill"],
+	workPhone: ["fa", "fa-phone-square"],
 	phd: ["fa", "fa-graduation-cap"],
+	mba: ["fa", "fa-graduation-cap"],
+	ba: ["fa", "fa-graduation-cap"],
 	jd: ["fa", "fa-graduation-cap"],
 	bs: ["fa", "fa-graduation-cap"],
-	cold: ["fa", "fa-snowflake-o"],
+	cold: ["bi", "bi-thermometer-snow"],
+	winter: ["fa", "fa-snowflake-o"],
+	hot: ["bi", "bi-thermometer-sun"],
+	fire: ["fa", "fa-fire"],
+	spring: ["bi", "bi-thermometer-half"],
 	// ... other mappings
 };
 
-function buildListItemForObject(
-	item: any,
-	includeKeys: boolean = false,
-	includeIcons: boolean = false
-): HTMLElement {
-	console.log("buildlistitem for object");
-	let listItemOptions: build.HTMLOptions = { tag: "li" };
-	let listItem = build.CreateLI(listItemOptions);
-	console.log(item);
-
-	/*
-	const processItem = (key: string, value: any) => {
-		let innerListItemOptions: build.HTMLOptions = { tag: "li" };
-		let innerListItem = build.CreateLI(innerListItemOptions);
-
-
-
-		let textContent = includeKeys ? `${key}: ${value}` : `${value}`;
-		let textNode = document.createTextNode(textContent);
-		innerListItem.appendChild(textNode);
-
-		return innerListItem;
-	};
-*/
-
-	/*
-	if ("listType" in item && "container" in item && "listItems" in item) {
-		// Handle nested lists
-		listItem.appendChild(BuildList(item));
-	} else if (typeof item === "object" && item !== null) {
-		// Handle simple objects
-		let innerListOptions: build.HTMLOptions = { tag: "ul" };
-		let innerList = build.CreateUL(innerListOptions);
-
-		for (const key in item) {
-			if (item.hasOwnProperty(key)) {
-				innerList.appendChild(processItem(key, item[key]));
-			}
-		}
-		listItem.appendChild(innerList);
-	} else {
-		// Handle non-object items (e.g., strings, numbers)
-		listItem.textContent = item.toString();
-	}
-*/
-	return listItem;
-}
 
 export function BuildList(
 	list: List,
 	includeKeys: boolean = false,
 	includeIcons: boolean = false
 ): HTMLElement {
-	console.log("BuildList");
+	//console.log(`BuildList(${includeIcons})`);
+	console.log(list);
 	let listElementOptions: build.HTMLOptions = {
 		classes: list.container,
 	};
@@ -208,23 +84,30 @@ export function BuildList(
 	list.listItems.forEach((item) => {
 		Object.keys(item).forEach((key) => {
 			const value = item[key];
-			console.log(key, value);
+			//console.log(key, value);
 
 			let listItemOptions: build.HTMLOptions = {
 				parent: listElement,
-				innerHTML: `${key} : ${value}`, // or value, depending on what you want to display
 			};
 			let lit = build.CreateLI(listItemOptions);
 
 			if (includeIcons) {
+				//console.log("Include Icons");
 				let iconClass = iconMapping[key];
-
-				let iconOptions: build.HTMLOptions = {
-					parent: lit,
-					classes: iconClass,
-				};
-				build.CreateSpan(iconOptions);
+				//console.log(iconClass);
+				if (iconClass != undefined) {
+					//console.log("ICON");
+					let iconOptions: build.HTMLOptions = {
+						parent: lit,
+						classes: iconClass,
+					};
+					console.log(iconOptions.classes?.toString());
+					build.CreateI(iconOptions);
+				} else {
+				//	console.log("not Icon");
+				}
 			}
+			lit.innerHTML += ` ${value}`; // or value, depending on what you want to display)
 
 			// listElement.append(lit);
 		});

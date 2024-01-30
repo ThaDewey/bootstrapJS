@@ -52,6 +52,10 @@ export function CreateSection(htmlOptions) {
     htmlOptions.tag = "section";
     return CreateElement(htmlOptions);
 }
+export function CreateI(htmlOptions) {
+    htmlOptions.tag = "i";
+    return CreateElement(htmlOptions);
+}
 export function CreateDiv(htmlOptions) {
     htmlOptions.tag = "div";
     return CreateElement(htmlOptions);
@@ -62,6 +66,10 @@ export function CreateA(htmlOptions) {
 }
 export function CreateP(htmlOptions) {
     htmlOptions.tag = "p";
+    return CreateElement(htmlOptions);
+}
+export function CreateSpan(htmlOptions) {
+    htmlOptions.tag = "span";
     return CreateElement(htmlOptions);
 }
 export function CreateH1(htmlOptions) {
