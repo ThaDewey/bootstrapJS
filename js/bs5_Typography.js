@@ -14,7 +14,7 @@ export const exampleList = {
     container: ContainerType.unstyled,
     listItems: [
         { fire: "Sale" },
-        { col: "hot" },
+        { cold: "hot" },
         { winter: "summer" },
         { spring: "fall" },
         { math: "1" },
