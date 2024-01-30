@@ -23,7 +23,7 @@ export const exampleList: List = {
 	container: ContainerType.unstyled,
 	listItems: [
 		{ fire: "Sale" },
-		{ col: "hot" },
+		{ cold: "hot" },
 		{ winter: "summer" },
 		{ spring: "fall" },
 		{ math: "1" },
@@ -138,6 +138,7 @@ const iconMapping: { [key: string]: string[] | string } = {
 	phd: ["fa", "fa-graduation-cap"],
 	jd: ["fa", "fa-graduation-cap"],
 	bs: ["fa", "fa-graduation-cap"],
+	cold: ["fa", "fa-snowflake-o"],
 	// ... other mappings
 };
 
@@ -205,14 +206,28 @@ export function BuildList(
 			: build.CreateUL(listElementOptions);
 
 	list.listItems.forEach((item) => {
-		//let lit = buildListItemForObject(item);
-		let listItemOptions: build.HTMLOptions = {
-			parent: listElement,
-			tag: "li",
-			innerHTML: item[0],
-		};
-		let lit = build.CreateLI(listItemOptions);
-		// listElement.append(lit);
+		Object.keys(item).forEach((key) => {
+			const value = item[key];
+			console.log(key, value);
+
+			let listItemOptions: build.HTMLOptions = {
+				parent: listElement,
+				innerHTML: `${key} : ${value}`, // or value, depending on what you want to display
+			};
+			let lit = build.CreateLI(listItemOptions);
+
+			if (includeIcons) {
+				let iconClass = iconMapping[key];
+
+				let iconOptions: build.HTMLOptions = {
+					parent: lit,
+					classes: iconClass,
+				};
+				build.CreateSpan(iconOptions);
+			}
+
+			// listElement.append(lit);
+		});
 	});
 
 	return listElement;
